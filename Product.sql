@@ -7,7 +7,7 @@ CREATE TABLE product (
   lookupcode character varying(32) NOT NULL DEFAULT(''), --Stored in the edu.uark.models.entities:ProductEntity#lookupCode property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
   quantity int NOT NULL DEFAULT(0), --Stored in the edu.uark.models.entities:ProductEntity#count property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
   createdon timestamp without time zone NOT NULL DEFAULT now(), --Stored in the edu.uark.dataaccess.entities:BaseEntity#createdOn property. See also the named constant defined in edu.uark.dataaccess.entities:BaseFieldNames that is used for Java <-> SQL mappings.
-  price money int NOT NULL DEFAULT(0.00),
+  price decimal(7,2) NOT NULL DEFAULT(0.00),
   active char(3) CHECK (Role in ('IS','BO','OFS')), --stock, on backorder, or out of stock
 
   CONSTRAINT product_pkey PRIMARY KEY (id)
