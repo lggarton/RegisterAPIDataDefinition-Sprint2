@@ -12,6 +12,8 @@ CREATE TABLE transactiontable (
   OIDS=FALSE
 );
 
+
+
 CREATE INDEX ix_transactiontable_cashierid
   ON transactiontable
   USING btree(cashierid);

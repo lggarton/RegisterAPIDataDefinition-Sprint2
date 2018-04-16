@@ -5,7 +5,7 @@ CREATE TABLE transactionentrytable (
   quantity int NOT NULL DEFAULT(0),
   price decimal(7,2) NOT NULL DEFAULT(0.00),
   createdon timestamp without time zone NOT NULL DEFAULT now(),
-  CONSTRAINT transactionentrytable_pkey PRIMARY KEY (entryid)
+  CONSTRAINT transactionentrytable_pkey PRIMARY KEY (entryid),
   CONSTRAINT transactionentrytable_Fkey FOREIGN KEY (id) REFERENCES transactiontable(id)
 ) WITH (
   OIDS=FALSE

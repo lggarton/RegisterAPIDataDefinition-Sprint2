@@ -3,12 +3,12 @@ CREATE EXTENSION pgcrypto; --Allows PostgreSQL to understand UUIDs. Only have to
 --DROP TABLE product;
 
 CREATE TABLE product (
-  id uuid NOT NULL DEFAULT gen_random_uuid(), --The record ID. Stored in the edu.uark.dataaccess.entities:BaseEntity#id property. See also the named constant defined in edu.uark.dataaccess.entities:BaseFieldNames that is used for Java <-> SQL mappings.
-  lookupcode character varying(32) NOT NULL DEFAULT(''), --Stored in the edu.uark.models.entities:ProductEntity#lookupCode property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
-  quantity int NOT NULL DEFAULT(0), --Stored in the edu.uark.models.entities:ProductEntity#count property. See also the named constant defined in edu.uark.models.entities.fieldnames:ProductFieldNames that is used for Java <-> SQL mappings.
-  createdon timestamp without time zone NOT NULL DEFAULT now(), --Stored in the edu.uark.dataaccess.entities:BaseEntity#createdOn property. See also the named constant defined in edu.uark.dataaccess.entities:BaseFieldNames that is used for Java <-> SQL mappings.
+  id uuid NOT NULL DEFAULT gen_random_uuid(),
+  lookupcode character varying(32) NOT NULL DEFAULT(''),
+  quantity int NOT NULL DEFAULT(0),
+  createdon timestamp without time zone NOT NULL DEFAULT now(),
   price decimal(7,2) NOT NULL DEFAULT(0.00),
-  active char(3) CHECK (Role in ('IS','BO','OFS')), --stock, on backorder, or out of stock
+  active char(3) CHECK (active in ('IS','BO','OFS')),
 
   CONSTRAINT product_pkey PRIMARY KEY (id)
 ) WITH (
